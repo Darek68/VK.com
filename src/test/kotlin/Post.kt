@@ -28,6 +28,7 @@ fun main() {
                     reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
                     signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
                     marked_as_ads = false,is_favorite = false,postponed_id = 0)
+    println("Будет создан пост..")
     println(WallService.add(post))
 
     val vId = 0
@@ -35,7 +36,7 @@ fun main() {
         reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
         signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
         marked_as_ads = false,is_favorite = false,postponed_id = 0)
-
+    println("Попытка апдейта поста номер $vId")
     if (WallService.update(post2)) println("Пост под номером $vId был успешно изменен")
     else println("Не удалось изменить пост под номером $vId")
 
