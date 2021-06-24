@@ -4,7 +4,7 @@ object WallService {
 
     fun  add(post : Post): Post {
         post.id = nextId
-        nextId += nextId
+        nextId += 1
         posts += post
         return posts.last()
     }
@@ -12,8 +12,10 @@ object WallService {
     fun update(post: Post): Boolean {
         val vId = post.id
         for ((index, vpost) in posts.withIndex()){
-            if (vpost.id == vId) posts[index] = post
-            return true
+            if (vpost.id == vId) {
+                posts[index] = post
+                return true
+            }
         }
         return false
     }

@@ -23,24 +23,34 @@ data class Post(
 )
 
 fun main() {
-
-    val post = Post(id = 0,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "Текст записи..",
+    val vId = 0
+    val post = Post(id = vId,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "Текст записи..",
                     reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
                     signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
                     marked_as_ads = false,is_favorite = false,postponed_id = 0)
     println("Будет создан пост..")
     println(WallService.add(post))
 
-    val vId = 0
     val post2 = Post(id = vId,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "измененный текст записи..",
         reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
         signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
         marked_as_ads = false,is_favorite = false,postponed_id = 0)
     println("Попытка апдейта поста номер $vId")
-    if (WallService.update(post2)) println("Пост под номером $vId был успешно изменен")
-    else println("Не удалось изменить пост под номером $vId")
+    println(updPost(post2))
 
+    val vIdNew = 1000
+    val post3 = Post(id = vIdNew,owner_id = 10,from_id = 11,created_by = 51,date = 121231,text = "совсем новый текст ..",
+        reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
+        signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
+        marked_as_ads = false,is_favorite = false,postponed_id = 0)
+    println("Попытка апдейта поста номер $vIdNew")
+    println(updPost(post3))
+}
 
+fun updPost(post:Post):String{
+    val vId = post.id
+    return if (WallService.update(post)) "Пост под номером $vId был успешно изменен"
+                                    else "Не удалось изменить пост под номером $vId"
 }
 
 
