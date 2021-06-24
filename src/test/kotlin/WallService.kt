@@ -1,4 +1,4 @@
-object WallService {
+class WallService {
     private var nextId : Int = 0
     private var posts = emptyArray<Post>()
 
@@ -19,5 +19,4 @@ object WallService {
         }
         return false
     }
-
 }

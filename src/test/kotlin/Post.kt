@@ -1,5 +1,5 @@
 
-
+val service = WallService()
 
 data class Post(
     var id: Int,
@@ -23,13 +23,19 @@ data class Post(
 )
 
 fun main() {
+  //  service.add(Post(/* заполняете поля */))
+   // service.add(Post(/* заполняете поля */))
+   // val update = Post(/* */)
+  //  val result = service.update(update)
+  //  assertTrue(result)
+
     val vId = 0
     val post = Post(id = vId,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "Текст записи..",
                     reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
                     signer_id = 1,can_pin = true,can_delete = true,can_edit = true,is_pinned = false,
                     marked_as_ads = false,is_favorite = false,postponed_id = 0)
     println("Будет создан пост..")
-    println(WallService.add(post))
+    println(service.add(post))
 
     val post2 = Post(id = vId,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "измененный текст записи..",
         reply_owner_id = 46,reply_post_id = 456,friends_only = false,post_type = "post",
@@ -49,7 +55,7 @@ fun main() {
 
 fun updPost(post:Post):String{
     val vId = post.id
-    return if (WallService.update(post)) "Пост под номером $vId был успешно изменен"
+    return if (service.update(post)) "Пост под номером $vId был успешно изменен"
                                     else "Не удалось изменить пост под номером $vId"
 }
 
