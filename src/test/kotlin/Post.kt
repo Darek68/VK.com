@@ -23,11 +23,6 @@ data class Post(
 )
 
 fun main() {
-  //  service.add(Post(/* заполняете поля */))
-   // service.add(Post(/* заполняете поля */))
-   // val update = Post(/* */)
-  //  val result = service.update(update)
-  //  assertTrue(result)
 
     val vId = 0
     val post = Post(id = vId,owner_id = 1,from_id = 1,created_by = 5,date = 1234231,text = "Текст записи..",

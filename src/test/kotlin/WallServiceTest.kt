@@ -9,6 +9,7 @@ class WallServiceTest {
         signer_id = 1, can_pin = true, can_delete = true, can_edit = true, is_pinned = false,
         marked_as_ads = false, is_favorite = false, postponed_id = 0,
     )
+
     @Test
     fun addTest() {
         //arrange
