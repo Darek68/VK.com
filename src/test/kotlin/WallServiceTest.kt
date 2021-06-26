@@ -19,7 +19,8 @@ class WallServiceTest {
         //act
         val result = service.add(post.copy(text = "Проверочный текст записи..")).id
         //assert
-        assertFalse(result == 0)
+       // assertFalse(result == 0)
+        assertEquals(false, result == 0)
        // assertNotEquals(0,result)
     }
 
