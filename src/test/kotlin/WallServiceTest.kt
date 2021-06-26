@@ -3,10 +3,15 @@ import org.junit.Test
 import org.junit.Assert.*
 
 class WallServiceTest {
+    val obj_copyright = Copyright()
+    val obj_reposts = Reposts()
+    val obj_views = Views()
+
     val post = Post(
         id = 0, owner_id = 1, from_id = 1, created_by = 5, date = 1234231, text = "Текст записи..",
-        reply_owner_id = 46, reply_post_id = 456, friends_only = false, post_type = "post",
-        signer_id = 1, can_pin = true, can_delete = true, can_edit = true, is_pinned = false,
+        reply_owner_id = 46, reply_post_id = 456, friends_only = false,
+        copyright = obj_copyright,reposts = obj_reposts,views = null,
+        post_type = "post",attachments = null,signer_id = 1, can_pin = true, can_delete = true, can_edit = true, is_pinned = false,
         marked_as_ads = false, is_favorite = false, postponed_id = 0,
     )
 
@@ -15,7 +20,7 @@ class WallServiceTest {
         //arrange
         val service = WallService()
         service.add(post.copy(text = "Второй текст записи.."))
-        service.add(post.copy(text = "Третий текст записи.."))
+        service.add(post.copy(text = "Третий текст записи..",views = Views()))
         //act
         val result = service.add(post.copy(text = "Проверочный текст записи..")).id
         //assert
@@ -31,9 +36,9 @@ class WallServiceTest {
         // заполняем несколькими постами
         service.add(post)
         service.add(post.copy(text = "Второй текст записи.."))
-        service.add(post.copy(text = "Третий текст записи.."))
+        service.add(post.copy(text = "Третий текст записи..",reposts = obj_reposts))
         // создаём информацию об обновлении
-        val update = post.copy(id = 2,text = "Третий текст записи..")
+        val update = post.copy(id = 2,text = "Третий текст записи..",copyright = obj_copyright)
 
         // выполняем целевое действие
         val result = service.update(update)
