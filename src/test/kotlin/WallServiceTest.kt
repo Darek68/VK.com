@@ -22,11 +22,15 @@ class WallServiceTest {
         service.add(post.copy(text = "Второй текст записи.."))
         service.add(post.copy(text = "Третий текст записи..",views = Views()))
         //act
-        val result = service.add(post.copy(text = "Проверочный текст записи..")).id
+        val testPost = post.copy(text = "Проверочный текст записи..")
+        val result = service.add(testPost)
         //assert
-       // assertFalse(result == 0)
-        assertEquals(false, result == 0)
-       // assertNotEquals(0,result)
+        assertEquals(testPost.copy(id=2), result)
+
+        //val result = service.add(post.copy(text = "Проверочный текст записи..")).id
+        //assertEquals(false, result == 0)
+        // assertFalse(result == 0)
+        // assertNotEquals(0,result)
     }
 
     @Test
