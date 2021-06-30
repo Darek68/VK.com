@@ -4,9 +4,9 @@
 
 interface Media {
     val id : Int
-    val album_id : Int
     val owner_id : Int
     val user_id : Int
+   // val album_id : Int
 }
 
 class Attachment(val id : Int,val media : Media)
@@ -23,28 +23,28 @@ class Attachments {
 
 class Photo(
     override val id: Int,
-    override val album_id: Int,
     override val owner_id: Int,
-    override val user_id: Int
+    override val user_id: Int,
+    val album_id: Int,
 ) : Media
 
 class Video(
     override val id: Int,
-    override val album_id: Int,
     override val owner_id: Int,
-    override val user_id: Int
+    override val user_id: Int,
+    val album_id: Int,
 ) : Media
 
 class Pictures(
     override val id: Int,
-    override val album_id: Int,
     override val owner_id: Int,
-    override val user_id: Int
+    override val user_id: Int,
+    val size: Int //размер изображения
 ) : Media
 
 class Docum(
     override val id: Int,
-    override val album_id: Int,
     override val owner_id: Int,
-    override val user_id: Int
+    override val user_id: Int,
+    val code: String // кодировка документа
 ) : Media
