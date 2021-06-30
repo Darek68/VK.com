@@ -13,7 +13,7 @@ class WallService {
         val vId = post.id
         for ((index, vpost) in posts.withIndex()){
             if (vpost.id == vId) {
-                posts[index] = post.copy(owner_id = posts[index].owner_id,date = posts[index].date)
+                posts[index] = post.copy(ownerId = posts[index].ownerId,date = posts[index].date)
                 return true
             }
         }
