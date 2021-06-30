@@ -1,15 +1,7 @@
 
-
-
-
-interface Media {
-    val id : Int
-    val owner_id : Int
-    val user_id : Int
-   // val album_id : Int
+interface Attachment {
+    val type : String
 }
-
-class Attachment(val id : Int,val media : Media)
 
 // класс поля медиавложений
 class Attachments {
@@ -22,29 +14,48 @@ class Attachments {
 }
 
 class Photo(
-    override val id: Int,
-    override val owner_id: Int,
-    override val user_id: Int,
-    val album_id: Int,
-) : Media
+    val id: Int,
+    val albumId: Int,
+    val userId: Int,
+    val text: String
+)
+class PhotoAttachment(override val type: String="photo",
+                      val photo: Photo) : Attachment
 
 class Video(
-    override val id: Int,
-    override val owner_id: Int,
-    override val user_id: Int,
-    val album_id: Int,
-) : Media
+    val id: Int,
+    val ownerId: Int,
+    val title: String,
+    val date: Int
+)
+class VideoAttachment(override val type: String="video",
+                      val video: Video) : Attachment
 
-class Pictures(
-    override val id: Int,
-    override val owner_id: Int,
-    override val user_id: Int,
-    val size: Int //размер изображения
-) : Media
+class Audio(
+    val id: Int,
+    val ownerId: Int,
+    val userId: Int,
+    val albumId: Int
+)
+class AudioAttachment(override val type: String="audio",
+                      val audio: Audio) : Attachment
 
-class Docum(
-    override val id: Int,
-    override val owner_id: Int,
-    override val user_id: Int,
-    val code: String // кодировка документа
-) : Media
+class Doc(
+    val id: Int,
+    val ownerId: Int,
+    val title: Int,
+    val size: String
+)
+class DocAttachment(override val type: String="doc",
+                      val doc: Doc) : Attachment
+
+class Page(
+    val id: Int,
+    val title: String,
+    val views: Int,
+    val created: Int,
+    val view_url: String
+)
+class PicturesAttachment(override val type: String="page",
+                      val page: Page) : Attachment
+
