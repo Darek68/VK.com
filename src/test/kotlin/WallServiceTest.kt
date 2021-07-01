@@ -105,13 +105,7 @@ class WallServiceTest {
         //act
         // выполняем целевое действие
         // здесь код с вызовом функции, которая должна выкинуть PostNotFoundException
-        val result = try {
-            service.createComment(comment)
-            true
-        } catch (e:PostNotFoundException){
-            false
-        }
-        //assert
-        assertEquals(false, result)
+        service.createComment(comment)
+
     }
 }
