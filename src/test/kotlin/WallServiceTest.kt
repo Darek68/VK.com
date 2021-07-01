@@ -69,9 +69,9 @@ class WallServiceTest {
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
     }
-/*
+
     @Test
-    fun updateComment() {
+    fun updateCommentTest() {
         //arrange
         // создаём целевой сервис
         val service = WallService()
@@ -94,14 +94,14 @@ class WallServiceTest {
     }
 
     @Test(expected = PostNotFoundException::class)
-    fun shouldThrow() {
+    fun shouldThrowTest() {
         //arrange
         // создаём целевой сервис
         val service = WallService()
         // заполняем несколькими постами
         service.add(post)
         service.add(post.copy(text = "Второй текст записи.."))
-        service.add(post.copy(text = "Третий текст записи.."))
+        //service.add(post.copy(text = "Третий текст записи.."))
         //act
         // выполняем целевое действие
         // здесь код с вызовом функции, которая должна выкинуть PostNotFoundException
@@ -112,6 +112,6 @@ class WallServiceTest {
             false
         }
         //assert
-        assertEquals(true, result)
-    } */
+        assertEquals(false, result)
+    }
 }

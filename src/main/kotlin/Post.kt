@@ -87,7 +87,7 @@ fun main() {
     println("Попытка апдейта поста номер $vIdNew")
     println(updPost(post3))
 
-    val comment = Comment(ownerId = 1,postId = 2,message = "Коментарий к посту..",replyToComment = 0,stickerId = 0,guid = "")
+    val comment = Comment(ownerId = 1,postId = 0,message = "Коментарий к посту..",replyToComment = 0,stickerId = 0,guid = "")
     service.createComment(comment)
 }
 
