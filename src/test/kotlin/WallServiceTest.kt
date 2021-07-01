@@ -14,6 +14,7 @@ class WallServiceTest {
         postType = "post",attachments = null,signerId = 1,canPin = true,canDelete = true,canEdit = true,isPinned = false,
         markedAsAds = false,isFavorite = false,postponedId = 0
     )
+    val comment = Comment(ownerId = 1,postId = 2,message = "Коментарий к посту..",replyToComment = 0,stickerId = 0,guid = "")
 
     @Test
     fun addTest() {
@@ -68,11 +69,49 @@ class WallServiceTest {
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
     }
-}
-
 /*
- на add - всего один, который проверяет, что после добавления поста id стал не равным 0
-на update - целых два:
-изменяем пост с существующим id, возвращается true
-изменяем пост с несуществующим id, возвращается false
- */
+    @Test
+    fun updateComment() {
+        //arrange
+        // создаём целевой сервис
+        val service = WallService()
+        // заполняем несколькими постами
+        service.add(post)
+        service.add(post.copy(text = "Второй текст записи.."))
+        service.add(post.copy(text = "Третий текст записи.."))
+        //act
+        // выполняем целевое действие
+        val result = try {
+            service.createComment(comment)
+            true
+        } catch (e:PostNotFoundException){
+            false
+        }
+        //assert
+        // проверяем результат (используйте assertTrue или assertFalse)
+        //assertFalse(result)
+        assertEquals(true, result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        //arrange
+        // создаём целевой сервис
+        val service = WallService()
+        // заполняем несколькими постами
+        service.add(post)
+        service.add(post.copy(text = "Второй текст записи.."))
+        service.add(post.copy(text = "Третий текст записи.."))
+        //act
+        // выполняем целевое действие
+        // здесь код с вызовом функции, которая должна выкинуть PostNotFoundException
+        val result = try {
+            service.createComment(comment)
+            true
+        } catch (e:PostNotFoundException){
+            false
+        }
+        //assert
+        assertEquals(true, result)
+    } */
+}

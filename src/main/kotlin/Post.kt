@@ -1,7 +1,6 @@
 
 val service = WallService()
 
-
 data class Post(
     var id: Int,
     val ownerId: Int,   // идентификатор владельца стены, на которой размещена запись
@@ -26,6 +25,18 @@ data class Post(
     val isFavorite: Boolean,  //объект добавлен в закладки у текущего пользователя
     val postponedId: Long,    //идентификатор отложенной записи - таймер
 )
+
+class Comment(
+    val ownerId: Int, //идентификатор пользователя или сообщества, на чьей стене находится запись, к которой необходимо добавить комментарий.
+    val postId: Int,  //идентификатор поста
+    val fromGroup: Int = 0, //идентификатор сообщества, от имени которого публикуется комментарий. По умолчанию: 0.
+    val message: String,  //текст комментария
+    val replyToComment: Int,  //идентификатор комментария, в ответ на который должен быть добавлен новый комментарий
+    val stickerId: Int,  //идентификатор стикера
+    val guid: String  //уникальный идентификатор, предназначенный для предотвращения повторной отправки одинакового комментария
+)
+
+class PostNotFoundException(message:String): RuntimeException(message)
 
 // источник материала
 class Copyright {
@@ -75,6 +86,9 @@ fun main() {
         markedAsAds = false,isFavorite = false,postponedId = 0)
     println("Попытка апдейта поста номер $vIdNew")
     println(updPost(post3))
+
+    val comment = Comment(ownerId = 1,postId = 2,message = "Коментарий к посту..",replyToComment = 0,stickerId = 0,guid = "")
+    service.createComment(comment)
 }
 
 fun updPost(post:Post):String{
