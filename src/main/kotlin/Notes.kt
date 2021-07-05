@@ -7,8 +7,6 @@ interface CrudService<T>{
     fun edit(element: T)
 }
 
-
-
 class NotesService: CrudService<Note>{
 
     override fun add(element: Note) {
